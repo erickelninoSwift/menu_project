@@ -5,7 +5,7 @@ function App() {
   console.log(allMenu);
   return (
     <>
-      <h1>Hello world</h1>
+      <section className="menu"></section>
     </>
   );
 }
