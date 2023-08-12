@@ -1,10 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import menuData from "./data";
 import Title from "./title";
 import "./index.css";
 function App() {
   const [allMenu, setMenu] = useState(menuData);
-  console.log(allMenu);
+  const [category, setCategory] = useState([]);
+  useEffect(() => {
+    function setAllmyCategory() {
+      setCategory(
+        allMenu.map((data) => {
+          return data.category;
+        })
+      );
+    }
+    setAllmyCategory();
+  }, []);
+
+  console.log(category);
   return (
     <>
       <main>
