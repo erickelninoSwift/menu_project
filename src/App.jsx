@@ -8,11 +8,12 @@ import "./index.css";
 function App() {
   const [allMenu, setMenu] = useState(menuData);
   const [category, setCategory] = useState([]);
+  const [filteredData, setFilteredData] = useState(null);
 
   useEffect(() => {
     function setAllmyCategory() {
       setCategory([
-        "all",
+        "All",
         ...new Set(
           allMenu.map((data) => {
             return data.category;
@@ -23,12 +24,23 @@ function App() {
     setAllmyCategory();
   }, []);
 
+  const filteredItem = (selectedCategory) => {
+    setMenu(
+      menuData.filter((data) => {
+        return data.category === selectedCategory;
+      })
+    );
+    if (selectedCategory === "All") setMenu(menuData);
+  };
   return (
     <>
       <main>
         <section className="menu">
           <Title titleText={"Our Menu"} />
-          <Categories allCategories={category} />
+          <Categories
+            allCategories={category}
+            filteredCategory={filteredItem}
+          />
           <Menu items={allMenu} />
         </section>
       </main>

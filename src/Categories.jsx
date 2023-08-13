@@ -1,12 +1,17 @@
 import React from "react";
 
-export const Categories = ({ allCategories }) => {
+export const Categories = ({ allCategories, filteredCategory }) => {
   return (
     <>
       <article className="btn-container">
-        {allCategories.map((data, index) => {
+        {allCategories.map((data) => {
           return (
-            <button key={index} className="btn">
+            <button
+              type="button"
+              key={data}
+              className="btn"
+              onClick={() => filteredCategory(data)}
+            >
               {data}
             </button>
           );
