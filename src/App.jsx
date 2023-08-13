@@ -25,12 +25,13 @@ function App() {
   }, []);
 
   const filteredItem = (selectedCategory) => {
-    setMenu(
-      menuData.filter((data) => {
-        return data.category === selectedCategory;
-      })
-    );
-    if (selectedCategory === "All") setMenu(menuData);
+    selectedCategory === "All"
+      ? setMenu(menuData)
+      : setMenu(
+          menuData.filter((data) => {
+            return data.category === selectedCategory;
+          })
+        );
   };
   return (
     <>
